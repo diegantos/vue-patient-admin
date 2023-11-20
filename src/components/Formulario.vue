@@ -8,8 +8,6 @@
 
     <form class="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
 
-      {{ nombre }}
-
       <div class="mb-5">
         <label for="mascota" class="block text-gray-700 uppercase font-bold">
           Nombre Mascota
@@ -19,9 +17,7 @@
           id="mascota" 
           placeholder="Nombre de la mascota"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          :value="nombre"
-          <!-- @input="(e) => nombre = e.target.value" -->
-          @input="leerNombre"
+          v-model="paciente.nombre"
           >
       </div>
 
@@ -33,7 +29,9 @@
           type="text" 
           id="propietario" 
           placeholder="Nombre del propietario"
-          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md">
+          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          v-model="paciente.propietario"
+          >
       </div>
 
       <div class="mb-5">
@@ -44,7 +42,9 @@
           type="email" 
           id="email" 
           placeholder="Email del propietario"
-          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md">
+          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          v-model="paciente.email"
+          >
       </div>
 
       <div class="mb-5">
@@ -54,7 +54,9 @@
         <input 
           type="date" 
           id="alta" 
-          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md">
+          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          v-model="paciente.alta"
+          >
       </div>
 
       <div class="mb-5">
@@ -64,7 +66,9 @@
         <textarea 
           id="sintomas" 
           placeholder="Describe los síntomas"
-          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"/>
+          class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
+          v-model="paciente.sintomas"
+          />
       </div>
 
       <input 
@@ -76,12 +80,14 @@
   </div>
 </template>
 <script setup>
-  import { ref} from 'vue'
+  import { reactive } from 'vue'
 
-  const nombre = ref('')
-
-  const leerNombre = (e) => {
-    nombre.value = e.target.value
-  }
+  const paciente = reactive({
+    nombre: '',
+    propietario: '',
+    email: '',
+    alta: '',
+    sintomas: '',
+  })
 
 </script>
