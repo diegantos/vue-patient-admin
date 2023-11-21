@@ -24,7 +24,7 @@
           id="mascota" 
           placeholder="Nombre de la mascota"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          v-model="paciente.nombre"
+          @input="$emit('update:nombre', $event.target.value)"
           >
       </div>
 
@@ -37,7 +37,6 @@
           id="propietario" 
           placeholder="Nombre del propietario"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          v-model="paciente.propietario"
           >
       </div>
 
@@ -50,7 +49,6 @@
           id="email" 
           placeholder="Email del propietario"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          v-model="paciente.email"
           >
       </div>
 
@@ -62,7 +60,6 @@
           type="date" 
           id="alta" 
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-          v-model="paciente.alta"
           >
       </div>
 
@@ -74,7 +71,6 @@
           id="sintomas" 
           placeholder="Describe los síntomas"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
-          v-model="paciente.sintomas"
           />
       </div>
 
@@ -82,7 +78,6 @@
         type="submit"
         class="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"
         value="Registrar paciente">
-
     </form>
   </div>
 </template>
@@ -95,12 +90,13 @@
     mensaje: ''
   })
 
-  const paciente = reactive({
-    nombre: '',
-    propietario: '',
-    email: '',
-    alta: '',
-    sintomas: '',
+  defineEmits(['update:nombre'])
+
+  const props = defineProps({
+    nombre:{
+      type: String,
+      required: true
+    }
   })
 
   const validar = () => {
