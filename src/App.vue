@@ -22,7 +22,7 @@
     <div class="mt-12 md:flex">
       <Formulario 
         v-model:nombre="paciente.nombre"
-        v-mode:propietario="paciente.propietario"
+        v-model:propietario="paciente.propietario"
         v-model:email="paciente.email"
         v-model:alta="paciente.alta"
         v-model:sintomas="paciente.sintomas"
@@ -35,6 +35,7 @@
         
         </div>
         <p v-else class="mt-20 text-2xl text-center">No hay pacientes</p>
+
       </div>
 
     </div>

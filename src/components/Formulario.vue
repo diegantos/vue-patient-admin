@@ -97,7 +97,7 @@
   defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas'])
 
   const props = defineProps({
-    nombre:{
+    nombre: {
       type: String,
       required: true
     }
