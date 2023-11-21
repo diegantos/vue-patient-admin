@@ -37,6 +37,7 @@
           id="propietario" 
           placeholder="Nombre del propietario"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          @input="$emit('update:propietario', $event.target.value)"
           >
       </div>
 
@@ -49,6 +50,7 @@
           id="email" 
           placeholder="Email del propietario"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          @input="$emit('update:email', $event.target.value)"
           >
       </div>
 
@@ -60,6 +62,7 @@
           type="date" 
           id="alta" 
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+          @input="$emit('update:alta', $event.target.value)"
           >
       </div>
 
@@ -71,6 +74,7 @@
           id="sintomas" 
           placeholder="Describe los síntomas"
           class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md h-40"
+          @input="$emit('update:sintomas', $event.target.value)"
           />
       </div>
 
@@ -90,7 +94,7 @@
     mensaje: ''
   })
 
-  defineEmits(['update:nombre'])
+  defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas'])
 
   const props = defineProps({
     nombre:{

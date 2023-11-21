@@ -3,9 +3,9 @@
   import Formulario from './components/Formulario.vue'
   import { ref, reactive } from 'vue';
 
-  const pacientes = ([])
+  const pacientes = ref([])
 
-    const paciente = reactive({
+  const paciente = reactive({
     nombre: '',
     propietario: '',
     email: '',
@@ -30,9 +30,13 @@
 
       <div class="md:w-1/2 md:h-screen overflow-y-scroll">
         <h3 class="font-black text-3xl text-center">Administra tus pacientes</h3>
-        <div v-if="pacientes.length > 0"></div>
-        <div v-else class="mt-20 text-2xl text-center">No hay pacientes</div>
+
+        <div v-if="pacientes.length > 0">
+        
+        </div>
+        <p v-else class="mt-20 text-2xl text-center">No hay pacientes</p>
       </div>
+
     </div>
   </div>
 </template>
