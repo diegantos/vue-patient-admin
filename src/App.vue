@@ -2,6 +2,7 @@
   import Header from './components/Header.vue'
   import Formulario from './components/Formulario.vue'
   import { ref, reactive } from 'vue';
+  import Paciente from './components/Paciente.vue'
 
   const pacientes = ref([])
 
@@ -14,7 +15,7 @@
   })
 
   const guardarPaciente = () => {
-    console.log('Agregando...')
+    pacientes.value.push(paciente)
   }
 
 </script>
@@ -37,7 +38,12 @@
         <h3 class="font-black text-3xl text-center">Administra tus pacientes</h3>
 
         <div v-if="pacientes.length > 0">
-        
+
+          <Paciente 
+            v-for="paciente in pacientes"
+            :paciente="paciente"
+          />
+
         </div>
         <p v-else class="mt-20 text-2xl text-center">No hay pacientes</p>
 
