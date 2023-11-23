@@ -131,9 +131,17 @@
       alerta.tipo = 'error'
       return
     }
-
+    //Se muestra la alerta de agregar correctamente
     emit('guardar-paciente')
-
+    alerta.mensaje = 'Paciente guardado correctamente'
+    alerta.tipo = 'exito'
+    //Se elimina la alerta pasados 3s
+    setTimeout(() => {
+      Object.assign(alerta, {
+        tipo: '',
+        mensaje: ''
+      })
+    }, 3000)
   }
 
 </script>
