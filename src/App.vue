@@ -17,10 +17,17 @@
   })
 
   const guardarPaciente = () => {
-    pacientes.value.push({
-      ...paciente,
-      id: uid()
-    })
+    //Comprobamos si un paciente es nuevo o es editado
+    if(paciente.id){
+      const { id } = paciente
+      const i = pacientes.value.findIndex((pacienteState) => pacienteState.id === id)
+      pacientes.value[i] = {...paciente}
+    } else {
+      pacientes.value.push({
+        ...paciente,
+        id: uid()
+      })
+    }
 
     Object.assign(paciente, {
       nombre: '',
@@ -28,6 +35,7 @@
       email: '',
       alta: '',
       sintomas: '',
+      id: null
     })
 
   }
