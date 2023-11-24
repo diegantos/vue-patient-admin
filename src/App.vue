@@ -29,8 +29,14 @@
       alta: '',
       sintomas: '',
     })
+
   }
-  
+  const actualizarPaciente = (id) => {
+    const pacienteEditar = pacientes.value.filter( paciente => paciente.id === id )[0]
+
+    Object.assign(paciente, pacienteEditar)
+    
+  }
 
 </script>
 
@@ -61,6 +67,7 @@
           <Paciente 
             v-for="paciente in pacientes"
             :paciente="paciente"
+            @actualizar-paciente="actualizarPaciente"
           />
 
         </div>
